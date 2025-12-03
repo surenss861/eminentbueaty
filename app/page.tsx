@@ -1,17 +1,17 @@
 import Hero from "@/components/Hero";
-import ServicesGrid from "@/components/ServicesGrid";
-import TrustSection from "@/components/TrustSection";
-import AboutSection from "@/components/AboutSection";
-import CTASection from "@/components/CTASection";
+import ServicesScroll from "@/components/ServicesScroll";
+import ResultsSection from "@/components/ResultsSection";
+import FounderSection from "@/components/FounderSection";
+import LuxuryCTA from "@/components/LuxuryCTA";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ServicesGrid />
-      <TrustSection />
-      <AboutSection />
-      <CTASection />
+      <ServicesScroll />
+      <ResultsSection />
+      <FounderSection />
+      <LuxuryCTA />
     </>
   );
 }

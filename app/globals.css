@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    --font-inter: 'Inter', system-ui, sans-serif;
-    --font-playfair: 'Playfair Display', Georgia, serif;
-    --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-handwritten: 'Dancing Script', cursive;
   }
 
   body {
-    @apply bg-white text-brand-primary antialiased;
-    font-family: var(--font-inter);
+    @apply bg-blush-base text-ink-black antialiased;
+    font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -33,6 +33,6 @@ html {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-brand-primary;
+  @apply outline-2 outline-offset-2 outline-ink-black;
 }
 

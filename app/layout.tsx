@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, DM_Sans, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
-import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
-import StickyBookingCTA from "@/components/StickyBookingCTA";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const dancing = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-handwritten",
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
@@ -48,18 +54,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${playfair.variable} ${dancing.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
         <LocalBusinessSchema />
-        <CustomCursor />
         <SmoothScroll>
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
-          <StickyBookingCTA />
         </SmoothScroll>
       </body>
     </html>
