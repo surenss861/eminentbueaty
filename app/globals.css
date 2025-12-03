@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-handwritten: 'Dancing Script', cursive;
   }
@@ -12,17 +12,38 @@
   body {
     @apply bg-light-cream text-dark-espresso antialiased;
     font-family: var(--font-sans);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair);
-    @apply font-semibold;
+    font-family: var(--font-serif);
+    @apply font-normal;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Smooth reveal animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #D4A574 0%, #C8A1AA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
@@ -46,19 +67,23 @@ html {
   @apply outline-2 outline-offset-2 outline-accent-rose-gold;
 }
 
-/* Scrollbar styling */
+/* Enhanced Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: #F5E6D3;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #D4A574;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #D4A574 0%, #C8A1AA 100%);
+  border-radius: 5px;
+  border: 2px solid #F5E6D3;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #C8A1AA;
+  background: linear-gradient(180deg, #C8A1AA 0%, #D4A574 100%);
 }
 
 /* Gradient Radial */
@@ -66,3 +91,30 @@ html {
   background: radial-gradient(circle at center, var(--tw-gradient-stops));
 }
 
+/* Selection styling */
+::selection {
+  background-color: rgba(212, 165, 116, 0.3);
+  color: #2A1F1A;
+}
+
+::-moz-selection {
+  background-color: rgba(212, 165, 116, 0.3);
+  color: #2A1F1A;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent layout shift */
+img {
+  max-width: 100%;
+  height: auto;
+}

@@ -44,10 +44,10 @@ export default function ServicesScroll() {
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="py-32 bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-40 bg-white relative overflow-hidden">
       {/* Subtle Grain */}
       <div className="absolute inset-0 bg-grain opacity-10" />
 
@@ -56,86 +56,138 @@ export default function ServicesScroll() {
         className="container mx-auto px-4 sm:px-6 lg:px-8"
       >
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-16"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20 text-center"
         >
-          <h2 className="text-5xl md:text-6xl font-serif font-normal text-dark-espresso mb-4 lowercase">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-sm text-accent-rose-gold uppercase tracking-[0.3em] mb-6 font-light"
+          >
             signature services
+          </motion.p>
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-dark-espresso mb-6 lowercase leading-tight">
+            precision meets artistry
           </h2>
-          <p className="text-lg text-dark-espresso/60 font-light max-w-2xl">
-            precision meets artistry in every session
-          </p>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 1 }}
+            className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold to-transparent mx-auto"
+          />
         </motion.div>
 
         {/* Alternating Image/Text Cards */}
-        <div className="space-y-24 max-w-6xl mx-auto">
+        <div className="space-y-32 max-w-7xl mx-auto">
           {services.map((service, index) => {
             const isEven = index % 2 === 0;
             return (
               <motion.div
                 key={service.name}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-150px" }}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.15,
+                  duration: 1, 
+                  delay: index * 0.2,
                   ease: [0.16, 1, 0.3, 1]
                 }}
-                className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${
+                className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center ${
                   !isEven ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* Image */}
+                {/* Image with Enhanced Effects */}
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4 }}
-                  className={`relative h-[500px] md:h-[600px] overflow-hidden rounded-sm ${
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className={`relative h-[600px] md:h-[700px] overflow-hidden rounded-sm group ${
                     isEven ? "md:order-1" : "md:order-2"
                   }`}
                 >
-                  <Image
-                    src={service.image}
-                    alt={service.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="relative h-full w-full"
+                  >
+                    <Image
+                      src={service.image}
+                      alt={service.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Overlay Glow on Hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-accent-rose-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    initial={false}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-espresso/20 to-transparent" />
+
+                  {/* Decorative Border */}
+                  <div className="absolute inset-0 border-2 border-accent-rose-gold/20 rounded-sm pointer-events-none" />
                 </motion.div>
 
                 {/* Text Content */}
-                <div className={`space-y-6 ${isEven ? "md:order-2" : "md:order-1"}`}>
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 + 0.3, duration: 0.8 }}
+                  className={`space-y-8 ${isEven ? "md:order-2" : "md:order-1"}`}
+                >
                   <div>
-                    <h3 className="text-4xl md:text-5xl font-serif font-normal text-dark-espresso mb-3 lowercase">
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.2 + 0.4 }}
+                      className="text-5xl md:text-6xl font-serif font-normal text-dark-espresso mb-4 lowercase leading-tight"
+                    >
                       {service.name}
-                    </h3>
-                    <p className="text-accent-rose-gold font-light text-lg mb-4 tracking-wide">
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.2 + 0.5 }}
+                      className="text-accent-rose-gold font-light text-xl mb-6 tracking-wide"
+                    >
                       {service.tagline}
-                    </p>
-                    <p className="text-dark-espresso/60 font-light leading-relaxed">
+                    </motion.p>
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.2 + 0.6 }}
+                      className="text-dark-espresso/60 font-light leading-relaxed text-lg"
+                    >
                       {service.benefits}
-                    </p>
+                    </motion.p>
                   </div>
                   <MagneticButton>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center space-x-2 text-dark-espresso hover:text-accent-rose-gold transition-colors font-light uppercase tracking-wider text-sm group"
+                      className="inline-flex items-center space-x-3 text-dark-espresso hover:text-accent-rose-gold transition-colors font-light uppercase tracking-wider text-sm group"
                     >
                       <span>learn more</span>
                       <motion.span
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                        className="inline-block"
+                        animate={{ x: [0, 6, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        className="inline-block text-xl"
                       >
                         →
                       </motion.span>
                     </Link>
                   </MagneticButton>
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}

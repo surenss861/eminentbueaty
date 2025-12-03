@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 
 const results = [
   {
@@ -35,6 +36,15 @@ const results = [
 export default function ResultsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [100, -50]);
 
   const nextSlide = () => {
     setDirection(1);
@@ -51,42 +61,69 @@ export default function ResultsSection() {
       x: direction > 0 ? 300 : -300,
       opacity: 0,
       scale: 0.95,
+      rotateY: direction > 0 ? 15 : -15,
     }),
     center: {
       x: 0,
       opacity: 1,
       scale: 1,
+      rotateY: 0,
     },
     exit: (direction: number) => ({
       x: direction < 0 ? 300 : -300,
       opacity: 0,
       scale: 0.95,
+      rotateY: direction < 0 ? 15 : -15,
     }),
   };
 
   return (
-    <section className="py-32 bg-base-champagne relative overflow-hidden">
+    <section ref={sectionRef} className="py-40 bg-base-champagne relative overflow-hidden">
       {/* Grain Overlay */}
       <div className="absolute inset-0 bg-grain opacity-20" />
 
+      {/* Background Glow */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10"
+        style={{ opacity: useTransform(scrollYProgress, [0, 0.5], [0, 0.3]) }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-rose-gold/10 rounded-full blur-3xl"
+      />
+
+      <motion.div
+        style={{ opacity, y }}
+        className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10"
       >
-        <h2 className="text-5xl md:text-6xl font-serif font-normal text-dark-espresso mb-4 lowercase">
-          real results
-        </h2>
-        <p className="text-lg text-dark-espresso/60 font-light max-w-2xl">
-          see the transformation
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
+        >
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-sm text-accent-rose-gold uppercase tracking-[0.3em] mb-6 font-light"
+          >
+            real results
+          </motion.p>
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-dark-espresso mb-6 lowercase leading-tight">
+            see the transformation
+          </h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 1 }}
+            className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold to-transparent mx-auto"
+          />
+        </motion.div>
       </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-5xl mx-auto relative">
-          <div className="relative h-[600px] md:h-[700px] overflow-hidden rounded-sm bg-white shadow-lg">
+        <div className="max-w-6xl mx-auto relative">
+          <div className="relative h-[650px] md:h-[750px] overflow-hidden rounded-sm bg-white shadow-2xl">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -99,15 +136,17 @@ export default function ResultsSection() {
                   x: { type: "spring", stiffness: 300, damping: 30 },
                   opacity: { duration: 0.3 },
                   scale: { duration: 0.3 },
+                  rotateY: { duration: 0.3 },
                 }}
                 className="absolute inset-0"
+                style={{ perspective: 1000 }}
               >
-                <div className="grid grid-cols-2 h-full gap-4 p-4">
+                <div className="grid grid-cols-2 h-full gap-6 p-6">
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="relative border-2 border-dark-espresso/10 rounded-sm overflow-hidden"
+                    className="relative border-2 border-dark-espresso/10 rounded-sm overflow-hidden group"
                   >
                     <Image
                       src={results[currentIndex].before}
@@ -116,15 +155,16 @@ export default function ResultsSection() {
                       sizes="50vw"
                       className="object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-sm">
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-espresso/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm px-5 py-3 rounded-sm shadow-lg">
                       <p className="text-dark-espresso text-sm font-light uppercase tracking-wider">before</p>
                     </div>
                   </motion.div>
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="relative border-2 border-accent-rose-gold/30 rounded-sm overflow-hidden"
+                    className="relative border-2 border-accent-rose-gold/30 rounded-sm overflow-hidden group"
                   >
                     <Image
                       src={results[currentIndex].after}
@@ -133,7 +173,8 @@ export default function ResultsSection() {
                       sizes="50vw"
                       className="object-cover"
                     />
-                    <div className="absolute top-4 right-4 bg-accent-rose-gold/20 backdrop-blur-sm px-4 py-2 rounded-sm border border-accent-rose-gold/30">
+                    <div className="absolute inset-0 bg-gradient-to-t from-accent-rose-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-6 right-6 bg-accent-rose-gold/20 backdrop-blur-sm px-5 py-3 rounded-sm border border-accent-rose-gold/30 shadow-lg">
                       <p className="text-dark-espresso text-sm font-light uppercase tracking-wider">after</p>
                     </div>
                   </motion.div>
@@ -141,15 +182,15 @@ export default function ResultsSection() {
 
                 {/* Testimonial in Center */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-8 py-6 rounded-sm border border-base-champagne-warm/30 shadow-lg"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-white/98 backdrop-blur-md px-10 py-8 rounded-sm border border-accent-rose-gold/20 shadow-2xl max-w-md"
                 >
-                  <p className="text-xl md:text-2xl font-handwritten text-accent-rose-gold mb-2 text-center">
+                  <p className="text-2xl md:text-3xl font-handwritten text-accent-rose-gold mb-3 text-center leading-relaxed">
                     &ldquo;{results[currentIndex].quote}&rdquo;
                   </p>
-                  <p className="text-dark-espresso/60 text-xs font-light uppercase tracking-wider text-center mb-1">
+                  <p className="text-dark-espresso/60 text-xs font-light uppercase tracking-wider text-center mb-2">
                     {results[currentIndex].treatment}
                   </p>
                   <p className="text-dark-espresso/40 text-xs font-light text-center">
@@ -159,28 +200,28 @@ export default function ResultsSection() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation */}
+            {/* Enhanced Navigation */}
             <motion.button
-              whileHover={{ scale: 1.1, backgroundColor: "rgba(42, 31, 26, 0.1)" }}
+              whileHover={{ scale: 1.15, backgroundColor: "rgba(42, 31, 26, 0.15)" }}
               whileTap={{ scale: 0.9 }}
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md hover:bg-white transition-colors p-4 rounded-full border border-dark-espresso/10 shadow-lg"
+              className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md hover:bg-white transition-colors p-5 rounded-full border-2 border-dark-espresso/10 shadow-xl z-30"
               aria-label="Previous"
             >
-              <ChevronLeft className="w-6 h-6 text-dark-espresso" />
+              <ChevronLeft className="w-7 h-7 text-dark-espresso" />
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.1, backgroundColor: "rgba(42, 31, 26, 0.1)" }}
+              whileHover={{ scale: 1.15, backgroundColor: "rgba(42, 31, 26, 0.15)" }}
               whileTap={{ scale: 0.9 }}
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md hover:bg-white transition-colors p-4 rounded-full border border-dark-espresso/10 shadow-lg"
+              className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md hover:bg-white transition-colors p-5 rounded-full border-2 border-dark-espresso/10 shadow-xl z-30"
               aria-label="Next"
             >
-              <ChevronRight className="w-6 h-6 text-dark-espresso" />
+              <ChevronRight className="w-7 h-7 text-dark-espresso" />
             </motion.button>
 
-            {/* Dots Indicator */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {/* Enhanced Dot Indicators */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-30">
               {results.map((_, index) => (
                 <motion.button
                   key={index}
@@ -188,12 +229,12 @@ export default function ResultsSection() {
                     setDirection(index > currentIndex ? 1 : -1);
                     setCurrentIndex(index);
                   }}
-                  whileHover={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.3 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-3 rounded-full transition-all ${
                     index === currentIndex
-                      ? "bg-accent-rose-gold w-8 shadow-glow-soft"
-                      : "bg-dark-espresso/20 hover:bg-dark-espresso/40 w-2"
+                      ? "bg-accent-rose-gold w-12 shadow-glow-soft"
+                      : "bg-dark-espresso/20 hover:bg-dark-espresso/40 w-3"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
