@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Calendar, X } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function StickyBookingCTA() {
@@ -27,7 +27,7 @@ export default function StickyBookingCTA() {
         >
           <Link
             href="/contact#book"
-            className="group bg-luxury-navy text-white px-6 py-3 rounded-sm font-semibold shadow-xl hover:bg-luxury-charcoal transition-all flex items-center space-x-2 hover:shadow-2xl text-sm tracking-wide"
+            className="bg-brand-primary text-white px-6 py-3 rounded-sm font-medium shadow-lg hover:bg-brand-dark transition-colors flex items-center space-x-2"
           >
             <Calendar className="w-4 h-4" />
             <span>Book Now</span>
@@ -37,4 +37,3 @@ export default function StickyBookingCTA() {
     </AnimatePresence>
   );
 }
-

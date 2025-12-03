@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-luxury-warm-white text-luxury-charcoal antialiased;
+    @apply bg-white text-brand-primary antialiased;
     font-family: var(--font-inter);
   }
 
@@ -33,6 +33,6 @@ html {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-luxury-navy;
+  @apply outline-2 outline-offset-2 outline-brand-primary;
 }
 
