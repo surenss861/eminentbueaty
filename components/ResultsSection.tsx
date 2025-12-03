@@ -47,25 +47,42 @@ export default function ResultsSection() {
     enter: (direction: number) => ({
       x: direction > 0 ? 300 : -300,
       opacity: 0,
+      scale: 0.95,
     }),
     center: {
       x: 0,
       opacity: 1,
+      scale: 1,
     },
     exit: (direction: number) => ({
       x: direction < 0 ? 300 : -300,
       opacity: 0,
+      scale: 0.95,
     }),
   };
 
   return (
     <section className="py-32 bg-blush-deep relative overflow-hidden">
+      {/* Animated Background Elements */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.1, 0.05],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-soft/20 rounded-full blur-3xl"
+      />
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10"
       >
         <h2 className="text-5xl md:text-6xl font-serif font-normal text-ink-black mb-4 lowercase">
           real results
@@ -75,9 +92,9 @@ export default function ResultsSection() {
         </p>
       </motion.div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto relative">
-          <div className="relative h-[600px] md:h-[700px] overflow-hidden rounded-sm bg-ink-black">
+          <div className="relative h-[600px] md:h-[700px] overflow-hidden rounded-sm bg-ink-black shadow-2xl">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -88,12 +105,18 @@ export default function ResultsSection() {
                 exit="exit"
                 transition={{
                   x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
+                  opacity: { duration: 0.3 },
+                  scale: { duration: 0.3 },
                 }}
                 className="absolute inset-0"
               >
                 <div className="grid grid-cols-2 h-full">
-                  <div className="relative">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="relative"
+                  >
                     <Image
                       src={results[currentIndex].before}
                       alt="Before"
@@ -101,11 +124,16 @@ export default function ResultsSection() {
                       sizes="50vw"
                       className="object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-ink-black/60 backdrop-blur-sm px-4 py-2 rounded-sm">
+                    <div className="absolute top-4 left-4 bg-ink-black/70 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10">
                       <p className="text-white text-sm font-light uppercase tracking-wider">before</p>
                     </div>
-                  </div>
-                  <div className="relative">
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="relative"
+                  >
                     <Image
                       src={results[currentIndex].after}
                       alt="After"
@@ -113,52 +141,63 @@ export default function ResultsSection() {
                       sizes="50vw"
                       className="object-cover"
                     />
-                    <div className="absolute top-4 right-4 bg-gold-soft/90 backdrop-blur-sm px-4 py-2 rounded-sm">
+                    <div className="absolute top-4 right-4 bg-gold-soft/90 backdrop-blur-md px-4 py-2 rounded-sm border border-ink-black/10">
                       <p className="text-ink-black text-sm font-light uppercase tracking-wider">after</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink-black/90 to-transparent p-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink-black/95 via-ink-black/80 to-transparent p-8"
+                >
                   <p className="text-gold-soft text-sm font-light mb-2 uppercase tracking-wider">
                     {results[currentIndex].caption}
                   </p>
-                  <p className="text-white/80 text-xs font-light">
+                  <p className="text-white/70 text-xs font-light">
                     {results[currentIndex].treatment}
                   </p>
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation */}
-            <button
+            {/* Enhanced Navigation */}
+            <motion.button
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+              whileTap={{ scale: 0.9 }}
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors p-3 rounded-full"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md hover:bg-white/30 transition-colors p-4 rounded-full border border-white/20"
               aria-label="Previous"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+              whileTap={{ scale: 0.9 }}
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors p-3 rounded-full"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md hover:bg-white/30 transition-colors p-4 rounded-full border border-white/20"
               aria-label="Next"
             >
               <ChevronRight className="w-6 h-6 text-white" />
-            </button>
+            </motion.button>
 
-            {/* Dots Indicator */}
+            {/* Enhanced Dots Indicator */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
               {results.map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => {
                     setDirection(index > currentIndex ? 1 : -1);
                     setCurrentIndex(index);
                   }}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`h-2 rounded-full transition-all ${
                     index === currentIndex
                       ? "bg-gold-soft w-8"
-                      : "bg-white/30 hover:bg-white/50"
+                      : "bg-white/30 hover:bg-white/50 w-2"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -47,18 +47,23 @@ export default function ServicesScroll() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section ref={containerRef} className="py-32 bg-white relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-soft/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blush-deep/10 rounded-full blur-3xl" />
+
       <motion.div
-        style={{ opacity }}
+        style={{ opacity, y }}
         className="container mx-auto px-4 sm:px-6 lg:px-8"
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-serif font-normal text-ink-black mb-4 lowercase">
@@ -70,43 +75,78 @@ export default function ServicesScroll() {
         </motion.div>
 
         {/* Horizontal Scroll Container */}
-        <div className="overflow-x-auto pb-8 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+        <div className="overflow-x-auto pb-8 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 scrollbar-hide">
           <div className="flex gap-6 md:gap-8" style={{ width: "max-content" }}>
             {services.map((service, index) => (
               <motion.div
                 key={service.name}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex-shrink-0 w-[85vw] sm:w-[400px] md:w-[450px] group"
+                initial={{ opacity: 0, x: 100, scale: 0.9 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.15,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                whileHover={{ scale: 1.02, y: -8 }}
+                className="flex-shrink-0 w-[85vw] sm:w-[400px] md:w-[450px] group cursor-pointer"
               >
-                <div className="relative h-[500px] md:h-[600px] overflow-hidden rounded-sm bg-blush-deep">
-                  <Image
-                    src={service.image}
-                    alt={service.name}
-                    fill
-                    sizes="(max-width: 640px) 85vw, 450px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-black/80 via-ink-black/20 to-transparent" />
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <h3 className="text-4xl md:text-5xl font-serif font-normal text-white mb-2 lowercase">
-                      {service.name}
-                    </h3>
-                    <p className="text-gold-soft font-light text-sm mb-6 tracking-wide">
-                      {service.tagline}
-                    </p>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center space-x-2 text-white/90 hover:text-white transition-colors text-sm font-light uppercase tracking-wider"
+                <Link href={`/services/${service.slug}`}>
+                  <div className="relative h-[500px] md:h-[600px] overflow-hidden rounded-sm bg-blush-deep">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
                     >
-                      <span>explore</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                      <Image
+                        src={service.image}
+                        alt={service.name}
+                        fill
+                        sizes="(max-width: 640px) 85vw, 450px"
+                        className="object-cover"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
+                    
+                    {/* Shimmer Effect on Hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    
+                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                      <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.3 }}
+                        className="text-4xl md:text-5xl font-serif font-normal text-white mb-2 lowercase"
+                      >
+                        {service.name}
+                      </motion.h3>
+                      <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.4 }}
+                        className="text-gold-soft font-light text-sm mb-6 tracking-wide"
+                      >
+                        {service.tagline}
+                      </motion.p>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.5 }}
+                        className="inline-flex items-center space-x-2 text-white/90 hover:text-white transition-colors text-sm font-light uppercase tracking-wider group-hover:translate-x-2 transition-transform"
+                      >
+                        <span>explore</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.div>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -115,4 +155,3 @@ export default function ServicesScroll() {
     </section>
   );
 }
-
