@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function FounderSection() {
   return (
@@ -9,7 +8,7 @@ export default function FounderSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Image */}
+            {/* Image - Blank/Placeholder */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -18,13 +17,6 @@ export default function FounderSection() {
               className="relative h-[600px] md:h-[700px]"
             >
               <div className="absolute inset-0 bg-blush-deep rounded-sm" />
-              <Image
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop&w=800&h=1000"
-                alt="Aklima - Founder & Expert Aesthetician"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover rounded-sm"
-              />
               
               {/* Handwritten Overlay */}
               <motion.div
@@ -37,7 +29,7 @@ export default function FounderSection() {
                 <p className="text-4xl md:text-5xl font-handwritten text-gold-soft mb-2">
                   aklima
                 </p>
-                <p className="text-sm text-white/90 font-light uppercase tracking-wider">
+                <p className="text-sm text-ink-espresso/80 font-light uppercase tracking-wider">
                   the artist. the expert.
                 </p>
               </motion.div>
