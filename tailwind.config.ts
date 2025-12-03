@@ -9,19 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blush: {
-          base: "#F8ECEB",
-          deep: "#EAD7D1",
-          rosewood: "#D4B5B0",
+        dark: {
+          espresso: "#1e1816",
+          "wine-black": "#1a0f0f",
+          "midnight-plum": "#1a1014",
         },
-        ink: {
-          black: "#1B1B1B",
-          espresso: "#3A2F2F",
+        accent: {
+          "rose-gold": "#d1a19b",
+          "champagne-blush": "#e7cfc7",
+          mauve: "#c8a1aa",
         },
-        gold: {
-          soft: "#E8D8BE",
-          champagne: "#D4C4A8",
-          shimmer: "#F5E6D3",
+        light: {
+          "off-white": "#f6f4f3",
         },
       },
       fontFamily: {
@@ -30,8 +29,12 @@ const config: Config = {
         handwritten: ["var(--font-handwritten)", "cursive"],
       },
       backgroundImage: {
-        "gradient-shimmer": "linear-gradient(135deg, #E8D8BE 0%, #F5E6D3 50%, #E8D8BE 100%)",
-        "gradient-glow": "radial-gradient(circle at 50% 50%, rgba(232, 216, 190, 0.3) 0%, transparent 70%)",
+        "grain": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+      },
+      boxShadow: {
+        "glow": "0 0 20px rgba(209, 161, 155, 0.3)",
+        "glow-strong": "0 0 40px rgba(209, 161, 155, 0.5)",
+        "inner-glow": "inset 0 0 30px rgba(209, 161, 155, 0.2)",
       },
     },
   },

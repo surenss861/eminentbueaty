@@ -27,13 +27,13 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-blush-base/95 backdrop-blur-md shadow-sm border-b border-blush-deep/20"
-          : "bg-blush-base/80 backdrop-blur-sm"
+          ? "bg-dark-espresso/95 backdrop-blur-md shadow-lg border-b border-light-off-white/5"
+          : "bg-dark-espresso/80 backdrop-blur-sm"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-xl font-serif font-normal text-ink-black lowercase tracking-wide">
+          <Link href="/" className="text-xl font-serif font-normal text-light-off-white lowercase tracking-wide">
             eminent beauty
           </Link>
 
@@ -43,14 +43,14 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-ink-espresso/80 hover:text-ink-black transition-colors font-light text-sm uppercase tracking-wider"
+                className="text-light-off-white/70 hover:text-accent-rose-gold transition-colors font-light text-sm uppercase tracking-wider"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact#book"
-              className="bg-ink-black text-white px-6 py-2.5 rounded-sm font-light hover:bg-ink-espresso transition-colors text-sm uppercase tracking-wider"
+              className="bg-accent-rose-gold/20 border border-accent-rose-gold/30 text-light-off-white px-6 py-2.5 rounded-sm font-light hover:bg-accent-rose-gold/30 transition-colors text-sm uppercase tracking-wider backdrop-blur-sm"
             >
               book
             </Link>
@@ -58,7 +58,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-ink-black"
+            className="md:hidden text-light-off-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -68,12 +68,12 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-blush-deep/30">
+          <div className="md:hidden py-4 border-t border-light-off-white/10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-3 text-ink-espresso/80 hover:text-ink-black transition-colors font-light uppercase tracking-wider text-sm"
+                className="block py-3 text-light-off-white/70 hover:text-accent-rose-gold transition-colors font-light uppercase tracking-wider text-sm"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
@@ -81,7 +81,7 @@ export default function Header() {
             ))}
             <Link
               href="/contact#book"
-              className="block mt-4 bg-ink-black text-white px-6 py-3 rounded-sm font-light text-center uppercase tracking-wider text-sm"
+              className="block mt-4 bg-accent-rose-gold/20 border border-accent-rose-gold/30 text-light-off-white px-6 py-3 rounded-sm font-light text-center uppercase tracking-wider text-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               book
