@@ -1,21 +1,21 @@
 import Hero from "@/components/Hero";
-import ServicesSection from "@/components/ServicesSection";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import SignatureTreatments from "@/components/SignatureTreatments";
+import MeetTheTeam from "@/components/MeetTheTeam";
+import ResultsSection from "@/components/ResultsSection";
 import PackagesSection from "@/components/PackagesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ApproachSection from "@/components/ApproachSection";
-import CTASection from "@/components/CTASection";
 import FAQSection from "@/components/FAQSection";
-import HorizontalScrollSection from "@/components/HorizontalScrollSection";
+import CTASection from "@/components/CTASection";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ServicesSection />
+      <WhyChooseUs />
+      <SignatureTreatments />
+      <MeetTheTeam />
+      <ResultsSection />
       <PackagesSection />
-      <ApproachSection />
-      <HorizontalScrollSection />
-      <TestimonialsSection />
       <FAQSection />
       <CTASection />
     </>

@@ -10,10 +10,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-serif font-bold text-luxury-gold mb-4">
+            <h3 className="text-2xl font-elegant font-light text-white mb-4">
               Eminent Beauty Centre
             </h3>
-            <p className="text-gray-300 mb-4">
+            <p className="text-white/70 mb-4 font-light leading-relaxed">
               Toronto&apos;s premier aesthetic spa offering advanced treatments
               for face and body. Experience luxury and excellence with our
               Canadian Certified Aesthetician.
@@ -23,7 +23,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-luxury-gold transition-colors"
+                className="text-white/70 hover:text-luxury-blush transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -32,7 +32,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-luxury-gold transition-colors"
+                className="text-white/70 hover:text-luxury-blush transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -42,20 +42,20 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-light mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/services"
-                  className="text-gray-300 hover:text-luxury-gold transition-colors"
+                  className="text-white/70 hover:text-luxury-blush transition-colors font-light"
                 >
-                  Services
+                  Treatments
                 </Link>
               </li>
               <li>
                 <Link
                   href="/about"
-                  className="text-gray-300 hover:text-luxury-gold transition-colors"
+                  className="text-white/70 hover:text-luxury-blush transition-colors font-light"
                 >
                   About Us
                 </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="text-gray-300 hover:text-luxury-gold transition-colors"
+                  className="text-white/70 hover:text-luxury-blush transition-colors font-light"
                 >
                   Blog
                 </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-300 hover:text-luxury-gold transition-colors"
+                  className="text-white/70 hover:text-luxury-blush transition-colors font-light"
                 >
                   Contact
                 </Link>
@@ -81,30 +81,30 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <h4 className="text-lg font-light mb-4 text-white">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-luxury-gold mt-0.5 flex-shrink-0" />
-                <span className="text-gray-300">
+                <MapPin className="w-5 h-5 text-luxury-blush mt-0.5 flex-shrink-0" />
+                <span className="text-white/70 font-light">
                   2434 Danforth Ave
                   <br />
                   Toronto, ON
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-luxury-gold flex-shrink-0" />
+                <Phone className="w-5 h-5 text-luxury-blush flex-shrink-0" />
                 <a
                   href="tel:6477006240"
-                  className="text-gray-300 hover:text-luxury-gold transition-colors"
+                  className="text-white/70 hover:text-luxury-blush transition-colors font-light"
                 >
                   (647) 700-6240
                 </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-luxury-gold flex-shrink-0" />
+                <Mail className="w-5 h-5 text-luxury-blush flex-shrink-0" />
                 <a
                   href="mailto:info@eminentbeautycentre.com"
-                  className="text-gray-300 hover:text-luxury-gold transition-colors"
+                  className="text-white/70 hover:text-luxury-blush transition-colors font-light"
                 >
                   info@eminentbeautycentre.com
                 </a>
@@ -113,14 +113,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-white/10 mt-8 pt-8 text-center text-white/60 text-sm font-light">
           <p>
             © {currentYear} Eminent Beauty Centre. All rights reserved. |{" "}
-            <Link href="/privacy" className="hover:text-luxury-gold">
+            <Link href="/privacy" className="hover:text-luxury-blush transition-colors">
               Privacy Policy
             </Link>{" "}
             |{" "}
-            <Link href="/terms" className="hover:text-luxury-gold">
+            <Link href="/terms" className="hover:text-luxury-blush transition-colors">
               Terms & Conditions
             </Link>
           </p>

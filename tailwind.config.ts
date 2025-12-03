@@ -9,28 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: "#fef9f0",
-          100: "#fef3e0",
-          200: "#fce5c1",
-          300: "#f9d082",
-          400: "#f5b643",
-          500: "#f2a01c",
-          600: "#e38912",
-          700: "#bc6a10",
-          800: "#975515",
-          900: "#7a4714",
-        },
         luxury: {
-          gold: "#d4af37",
-          cream: "#f5f5dc",
-          charcoal: "#36454f",
-          navy: "#1a1a2e",
+          blush: "#E8D5C4",
+          "dusty-rose": "#D4A5A5",
+          "soft-rose": "#E8C4C4",
+          ivory: "#FAF8F3",
+          "warm-white": "#FFFEF9",
+          navy: "#1B2A3A",
+          charcoal: "#2C3E50",
+          gold: "#C9A961",
+          "soft-gold": "#E8D5B7",
         },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         serif: ["var(--font-playfair)", "Georgia", "serif"],
+        elegant: ["var(--font-cormorant)", "Georgia", "serif"],
       },
     },
   },

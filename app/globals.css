@@ -6,10 +6,11 @@
   :root {
     --font-inter: 'Inter', system-ui, sans-serif;
     --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-cormorant: 'Cormorant Garamond', Georgia, serif;
   }
 
   body {
-    @apply bg-white text-luxury-charcoal antialiased;
+    @apply bg-luxury-warm-white text-luxury-charcoal antialiased;
     font-family: var(--font-inter);
   }
 
@@ -32,6 +33,6 @@ html {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-primary-500;
+  @apply outline-2 outline-offset-2 outline-luxury-navy;
 }
 

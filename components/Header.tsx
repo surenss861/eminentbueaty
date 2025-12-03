@@ -19,7 +19,7 @@ export default function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
+    { href: "/services", label: "Treatments" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
@@ -29,21 +29,18 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/98 backdrop-blur-xl shadow-xl border-b border-gray-100"
-          : "bg-white/90 backdrop-blur-lg"
+          ? "bg-luxury-warm-white/98 backdrop-blur-xl shadow-md border-b border-luxury-blush/20"
+          : "bg-luxury-warm-white/95 backdrop-blur-lg"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-luxury-gold/20 rounded-full blur-xl group-hover:bg-luxury-gold/30 transition-all" />
-              <span className="relative text-3xl font-serif font-bold bg-gradient-to-r from-luxury-gold to-yellow-500 bg-clip-text text-transparent">
-                Eminent
-              </span>
-            </div>
-            <span className="text-xl font-semibold text-luxury-charcoal">Beauty Centre</span>
+          <Link href="/" className="flex items-center space-x-2 group">
+            <span className="text-2xl font-elegant font-light text-luxury-navy">
+              Eminent
+            </span>
+            <span className="text-lg font-light text-luxury-charcoal/70">Beauty Centre</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,10 +49,10 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-luxury-charcoal hover:text-luxury-gold transition-all font-medium px-4 py-2 rounded-lg hover:bg-luxury-gold/10 relative group"
+                className="text-luxury-charcoal hover:text-luxury-dusty-rose transition-all font-light px-4 py-2 text-sm tracking-wide relative group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-luxury-gold group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-luxury-dusty-rose group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </div>
@@ -64,15 +61,15 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <a
               href="tel:6477006240"
-              className="flex items-center space-x-2 text-luxury-charcoal hover:text-luxury-gold transition-all px-4 py-2 rounded-lg hover:bg-luxury-gold/10"
+              className="flex items-center space-x-2 text-luxury-charcoal hover:text-luxury-dusty-rose transition-all px-4 py-2 text-sm"
               aria-label="Call us"
             >
-              <Phone className="w-5 h-5" />
-              <span className="text-sm font-medium">(647) 700-6240</span>
+              <Phone className="w-4 h-4" />
+              <span className="font-light">(647) 700-6240</span>
             </a>
             <Link
               href="/contact#book"
-              className="bg-gradient-to-r from-luxury-gold to-yellow-500 text-white px-8 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all shadow-lg"
+              className="bg-luxury-navy text-white px-6 py-2.5 rounded-sm font-semibold hover:bg-luxury-charcoal transition-all shadow-md hover:shadow-lg text-sm tracking-wide"
             >
               Book Now
             </Link>
