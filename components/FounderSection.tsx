@@ -36,17 +36,17 @@ export default function FounderSection() {
           <div className="absolute inset-0 bg-grain opacity-25" />
         </motion.div>
 
-        {/* Subtle Glow Overlay */}
+        {/* Subtle Glow Overlay - Breathing */}
         <motion.div
           animate={{
-            opacity: [0.1, 0.2, 0.1],
+            opacity: [0.08, 0.18, 0.08],
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute inset-0 bg-gradient-radial from-accent-rose-gold/10 via-transparent to-transparent"
+          className="absolute inset-0 bg-gradient-radial from-accent-rose-gold/8 via-transparent to-transparent"
         />
 
         {/* Quote Overlay */}
@@ -59,19 +59,19 @@ export default function FounderSection() {
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-5xl md:text-7xl lg:text-8xl font-handwritten text-accent-champagne-blush mb-10 leading-tight"
             >
               <motion.span
                 animate={{
                   textShadow: [
-                    "0 0 30px rgba(231, 207, 199, 0.4)",
-                    "0 0 50px rgba(231, 207, 199, 0.6)",
-                    "0 0 30px rgba(231, 207, 199, 0.4)",
+                    "0 0 30px rgba(231, 207, 199, 0.3)",
+                    "0 0 55px rgba(231, 207, 199, 0.6)",
+                    "0 0 30px rgba(231, 207, 199, 0.3)",
                   ],
                 }}
                 transition={{
-                  duration: 5,
+                  duration: 6,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
@@ -86,16 +86,16 @@ export default function FounderSection() {
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 1 }}
-              className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mx-auto mb-10"
+              transition={{ delay: 0.4, duration: 1.2 }}
+              className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mx-auto mb-12"
             />
             
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="space-y-6 text-light-off-white/85 font-light leading-relaxed max-w-3xl mx-auto text-lg"
+              transition={{ delay: 0.6, duration: 1.2 }}
+              className="space-y-6 text-light-off-white/90 font-light leading-relaxed max-w-3xl mx-auto text-lg"
             >
               <p>
                 with over 5 years of expertise, aklima brings a unique blend of technical
@@ -105,13 +105,22 @@ export default function FounderSection() {
                 every session is a collaboration—a conversation between science and
                 aesthetics, where subtle refinements create transformative results.
               </p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8, duration: 1 }}
+                className="text-light-off-white/80 italic pt-4"
+              >
+                because you deserve to see yourself the way others see you—radiant, confident, powerful.
+              </motion.p>
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ delay: 1, duration: 0.8 }}
               className="mt-12 text-sm text-light-off-white/70 font-light uppercase tracking-wider"
             >
               — aklima, canadian certified aesthetician

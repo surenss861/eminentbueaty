@@ -22,23 +22,23 @@ export default function LuxuryCTA() {
       {/* Grain Overlay */}
       <div className="absolute inset-0 bg-grain opacity-15" />
 
-      {/* Multiple Glow Orbs */}
+      {/* Multiple Glow Orbs - Gentle Breathing */}
       {[...Array(3)].map((_, i) => (
         <motion.div
           key={i}
           animate={{
-            scale: [1, 1.5 + i * 0.3, 1],
-            opacity: [0.1, 0.25 + i * 0.05, 0.1],
-            x: [0, (i % 2 === 0 ? 1 : -1) * (80 - i * 20)],
-            y: [0, (i < 1 ? 1 : -1) * (60 - i * 15)],
+            scale: [1, 1.6 + i * 0.3, 1],
+            opacity: [0.08, 0.22 + i * 0.04, 0.08],
+            x: [0, (i % 2 === 0 ? 1 : -1) * (70 - i * 18)],
+            y: [0, (i < 1 ? 1 : -1) * (55 - i * 12)],
           }}
           transition={{
-            duration: 15 + i * 5,
+            duration: 18 + i * 6,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 2,
+            delay: i * 2.5,
           }}
-          className={`absolute w-96 h-96 bg-accent-rose-gold/10 rounded-full blur-3xl ${
+          className={`absolute w-96 h-96 bg-accent-rose-gold/8 rounded-full blur-3xl ${
             i === 0 ? "top-20 right-20" : 
             i === 1 ? "bottom-20 left-20" : 
             "top-1/2 left-1/2"
@@ -52,11 +52,11 @@ export default function LuxuryCTA() {
           backgroundPosition: ["0% 0%", "100% 100%"],
         }}
         transition={{
-          duration: 25,
+          duration: 30,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute inset-0 bg-gradient-to-br from-transparent via-accent-rose-gold/5 to-transparent bg-[length:200%_200%] z-0"
+        className="absolute inset-0 bg-gradient-to-br from-transparent via-accent-rose-gold/4 to-transparent bg-[length:200%_200%] z-0"
       />
 
       <motion.div
@@ -68,21 +68,21 @@ export default function LuxuryCTA() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 1 }}
-              className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mx-auto mb-10"
+              transition={{ delay: 0.3, duration: 1.2 }}
+              className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mx-auto mb-12"
             />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 1 }}
+              transition={{ delay: 0.4, duration: 1.2 }}
               className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal mb-10 lowercase leading-tight text-shadow-soft"
             >
               your ritual starts here.
@@ -91,10 +91,19 @@ export default function LuxuryCTA() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-xl text-light-off-white/75 mb-16 font-light max-w-2xl mx-auto leading-relaxed"
+              transition={{ delay: 0.6, duration: 1 }}
+              className="text-xl text-light-off-white/80 mb-6 font-light max-w-2xl mx-auto leading-relaxed"
             >
               beauty is a ritual. book your free consultation.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="text-lg text-light-off-white/65 font-light max-w-xl mx-auto leading-relaxed italic"
+            >
+              take the first step toward the confidence you&apos;ve been waiting for.
             </motion.p>
           </motion.div>
 
@@ -102,7 +111,7 @@ export default function LuxuryCTA() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.8 }}
+            transition={{ delay: 1, duration: 1 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12"
           >
             <MagneticButton>
@@ -114,7 +123,7 @@ export default function LuxuryCTA() {
                   className="absolute inset-0 bg-gradient-to-r from-accent-rose-gold/30 via-accent-rose-gold/20 to-accent-rose-gold/30"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
                 />
                 <motion.span
                   className="relative z-10"
@@ -137,7 +146,7 @@ export default function LuxuryCTA() {
                   className="absolute inset-0 bg-light-off-white/5"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   style={{ transformOrigin: "left" }}
                 />
                 <MessageCircle className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
@@ -156,7 +165,7 @@ export default function LuxuryCTA() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.9, duration: 0.8 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
             className="text-light-off-white/60 text-sm font-light"
           >
             or call{" "}

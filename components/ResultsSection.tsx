@@ -69,52 +69,61 @@ export default function ResultsSection() {
       {/* Grain Overlay */}
       <div className="absolute inset-0 bg-grain opacity-15" />
 
-      {/* Background Glow Orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/4 left-1/4 w-80 h-80 bg-accent-rose-gold/10 rounded-full blur-3xl"
-      />
+      {/* Background Glow Orbs - Gentle Breathing */}
       <motion.div
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.08, 0.18, 0.08],
         }}
         transition={{
-          duration: 15,
+          duration: 14,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-champagne-blush/8 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-80 h-80 bg-accent-rose-gold/8 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [0.06, 0.16, 0.06],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-champagne-blush/6 rounded-full blur-3xl"
       />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10"
       >
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 1 }}
-          className="w-24 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mb-8"
+          transition={{ delay: 0.2, duration: 1.2 }}
+          className="w-24 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mb-10"
         />
         <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-light-off-white mb-6 lowercase leading-tight text-shadow-soft">
           real results
         </h2>
-        <p className="text-xl text-light-off-white/70 font-light max-w-2xl leading-relaxed">
+        <p className="text-xl text-light-off-white/75 font-light max-w-2xl leading-relaxed mb-4">
           where confidence begins under your skin.
         </p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="text-lg text-light-off-white/65 font-light max-w-2xl leading-relaxed italic"
+        >
+          these are real transformations. real stories. real confidence reclaimed.
+        </motion.p>
       </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
