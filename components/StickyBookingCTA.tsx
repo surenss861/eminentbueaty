@@ -23,14 +23,15 @@ export default function StickyBookingCTA() {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 100 }}
+          whileHover={{ scale: 1.05 }}
           className="fixed bottom-8 right-8 z-50"
         >
           <Link
             href="/contact#book"
-            className="bg-brand-primary text-white px-6 py-3 rounded-sm font-medium shadow-lg hover:bg-brand-dark transition-colors flex items-center space-x-2"
+            className="bg-dark-espresso text-light-off-white px-6 py-3 rounded-sm font-light shadow-lg hover:bg-dark-espresso/90 transition-colors flex items-center space-x-2 uppercase tracking-wider text-sm group"
           >
-            <Calendar className="w-4 h-4" />
-            <span>Book Now</span>
+            <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <span>book now</span>
           </Link>
         </motion.div>
       )}

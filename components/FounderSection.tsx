@@ -16,7 +16,7 @@ export default function FounderSection() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-dark-wine-black">
+    <section ref={sectionRef} className="relative overflow-hidden bg-white">
       {/* Full Bleed Photo */}
       <div className="relative h-screen md:h-[90vh]">
         <div className="absolute inset-0">
@@ -25,13 +25,13 @@ export default function FounderSection() {
             alt="Aklima - Founder & Expert Aesthetician"
             fill
             sizes="100vw"
-            className="object-cover opacity-40 grayscale"
+            className="object-cover opacity-30 grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-wine-black via-dark-wine-black/80 to-dark-wine-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-base-champagne via-base-champagne-warm/80 to-white" />
           <div className="absolute inset-0 bg-grain opacity-20" />
         </div>
 
-        {/* Quote Overlay */}
+        {/* Content Overlay */}
         <motion.div
           style={{ opacity, y }}
           className="absolute inset-0 flex items-center justify-center z-10"
@@ -42,7 +42,7 @@ export default function FounderSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-6xl lg:text-7xl font-handwritten text-accent-champagne-blush mb-8"
+              className="text-4xl md:text-6xl lg:text-7xl font-handwritten text-accent-rose-gold mb-8"
             >
               &ldquo;beauty isn&apos;t vanity.
               <br />
@@ -54,7 +54,7 @@ export default function FounderSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="space-y-4 text-light-off-white/80 font-light leading-relaxed max-w-2xl mx-auto"
+              className="space-y-4 text-dark-espresso/70 font-light leading-relaxed max-w-2xl mx-auto"
             >
               <p>
                 with over 5 years of expertise, aklima brings a unique blend of technical
@@ -71,7 +71,7 @@ export default function FounderSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="mt-8 text-sm text-light-off-white/60 font-light uppercase tracking-wider"
+              className="mt-8 text-sm text-dark-espresso/50 font-light uppercase tracking-wider"
             >
               — aklima, canadian certified aesthetician
             </motion.p>

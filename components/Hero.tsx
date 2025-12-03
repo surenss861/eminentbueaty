@@ -17,8 +17,8 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-espresso">
-      {/* Background Image with Motion Blur */}
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-base-champagne">
+      {/* Background Image with Muted Gradient */}
       <motion.div
         style={{ y: backgroundY }}
         className="absolute inset-0 z-0"
@@ -29,40 +29,25 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-espresso via-dark-wine-black to-dark-midnight-plum" />
-        <div className="absolute inset-0 bg-grain opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-base-champagne via-base-champagne-warm/90 to-base-rosewood/20" />
+        <div className="absolute inset-0 bg-grain opacity-30" />
       </motion.div>
 
-      {/* Animated Sparkles */}
+      {/* Subtle Glow Orbs */}
       <motion.div
         animate={{
-          opacity: [0.2, 0.4, 0.2],
+          opacity: [0.15, 0.25, 0.15],
           scale: [1, 1.2, 1],
         }}
         transition={{
-          duration: 4,
+          duration: 6,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/4 right-1/4 w-32 h-32 bg-accent-rose-gold/20 rounded-full blur-2xl"
+        className="absolute top-1/4 right-1/4 w-64 h-64 bg-accent-rose-gold/10 rounded-full blur-3xl"
       />
-      <motion.div
-        animate={{
-          opacity: [0.15, 0.35, 0.15],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-accent-champagne-blush/15 rounded-full blur-3xl"
-      />
-
-      {/* Inner Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-accent-rose-gold/10 via-transparent to-transparent" />
 
       <motion.div
         style={{ opacity }}
@@ -79,7 +64,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-light-off-white mb-8 leading-[0.95] tracking-tight"
+              className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-dark-espresso mb-8 leading-[0.95] tracking-tight lowercase"
             >
               <motion.span
                 initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
@@ -87,7 +72,7 @@ export default function Hero() {
                 transition={{ delay: 0.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="block"
               >
-                beauty is power.
+                beauty begins
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
@@ -95,7 +80,7 @@ export default function Hero() {
                 transition={{ delay: 0.7, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="block text-accent-rose-gold"
               >
-                silence is strength.
+                under your skin
               </motion.span>
             </motion.h1>
 
@@ -104,9 +89,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="text-xl md:text-2xl text-light-off-white/80 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
+              className="text-xl md:text-2xl text-dark-espresso/70 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
             >
-              you already have it. we just bring it forward.
+              confidence is your best accessory
             </motion.p>
 
             {/* CTA Buttons */}
@@ -119,31 +104,31 @@ export default function Hero() {
               <MagneticButton>
                 <Link
                   href="/contact#book"
-                  className="group bg-accent-rose-gold/20 backdrop-blur-sm border border-accent-rose-gold/30 text-light-off-white px-10 py-4 rounded-sm font-light hover:bg-accent-rose-gold/30 transition-all flex items-center space-x-2 tracking-wide text-sm uppercase relative overflow-hidden"
+                  className="group bg-dark-espresso text-light-off-white px-10 py-4 rounded-sm font-light hover:bg-dark-espresso/90 transition-all flex items-center space-x-2 tracking-wide text-sm uppercase relative overflow-hidden"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-accent-rose-gold/10"
+                    className="absolute inset-0 bg-accent-rose-gold/20"
                     initial={{ scaleX: 0 }}
                     whileHover={{ scaleX: 1 }}
                     transition={{ duration: 0.4 }}
                     style={{ transformOrigin: "left" }}
                   />
-                  <span className="relative z-10">begin your ritual</span>
+                  <span className="relative z-10">book consultation</span>
                 </Link>
               </MagneticButton>
               <MagneticButton>
                 <Link
                   href="/services"
-                  className="border border-light-off-white/20 text-light-off-white px-10 py-4 rounded-sm font-light hover:bg-light-off-white/5 transition-all tracking-wide text-sm uppercase backdrop-blur-sm relative overflow-hidden group"
+                  className="border border-dark-espresso/30 text-dark-espresso px-10 py-4 rounded-sm font-light hover:bg-dark-espresso hover:text-light-off-white transition-all tracking-wide text-sm uppercase backdrop-blur-sm relative overflow-hidden group"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-light-off-white/5"
+                    className="absolute inset-0 bg-dark-espresso"
                     initial={{ scaleX: 0 }}
                     whileHover={{ scaleX: 1 }}
                     transition={{ duration: 0.4 }}
                     style={{ transformOrigin: "left" }}
                   />
-                  <span className="relative z-10">view treatments</span>
+                  <span className="relative z-10">explore services</span>
                 </Link>
               </MagneticButton>
             </motion.div>

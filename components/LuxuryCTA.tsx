@@ -18,7 +18,7 @@ export default function LuxuryCTA() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section ref={sectionRef} className="relative py-32 overflow-hidden bg-dark-espresso text-light-off-white">
+    <section ref={sectionRef} className="relative py-32 overflow-hidden bg-base-rosewood text-light-off-white">
       {/* Grain Overlay */}
       <div className="absolute inset-0 bg-grain opacity-10" />
 
@@ -48,7 +48,7 @@ export default function LuxuryCTA() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl md:text-6xl lg:text-7xl font-serif font-normal mb-8 lowercase leading-tight"
           >
-            your ritual starts here.
+            your ritual starts here
           </motion.h2>
 
           <motion.p
@@ -80,7 +80,7 @@ export default function LuxuryCTA() {
                   transition={{ duration: 0.4 }}
                   style={{ transformOrigin: "left" }}
                 />
-                <span className="relative z-10">book your consultation</span>
+                <span className="relative z-10">book consultation</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
               </Link>
             </MagneticButton>
@@ -112,7 +112,7 @@ export default function LuxuryCTA() {
             className="text-light-off-white/50 text-sm font-light"
           >
             or call{" "}
-            <a href="tel:6477006240" className="text-accent-rose-gold hover:text-accent-champagne-blush transition-colors">
+            <a href="tel:6477006240" className="text-accent-rose-gold hover:text-accent-rose-gold/80 transition-colors">
               (647) 700-6240
             </a>
           </motion.p>

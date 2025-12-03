@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-dark-espresso text-light-off-white antialiased;
+    @apply bg-light-cream text-dark-espresso antialiased;
     font-family: var(--font-sans);
   }
 
@@ -44,6 +44,21 @@ html {
 /* Focus visible for accessibility */
 *:focus-visible {
   @apply outline-2 outline-offset-2 outline-accent-rose-gold;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5E6D3;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4A574;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A1AA;
 }
 
 /* Gradient Radial */
