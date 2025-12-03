@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import ServicesScroll from "@/components/ServicesScroll";
 import ResultsSection from "@/components/ResultsSection";
 import FounderSection from "@/components/FounderSection";
@@ -9,7 +8,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <WhyChooseUs />
       <ServicesScroll />
       <ResultsSection />
       <FounderSection />

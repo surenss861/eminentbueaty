@@ -14,13 +14,13 @@ export default function LuxuryCTA() {
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [100, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   return (
-    <section ref={sectionRef} className="relative py-40 overflow-hidden bg-base-rosewood text-light-off-white">
+    <section ref={sectionRef} className="relative py-40 overflow-hidden bg-dark-espresso text-light-off-white">
       {/* Grain Overlay */}
-      <div className="absolute inset-0 bg-grain opacity-10" />
+      <div className="absolute inset-0 bg-grain opacity-15" />
 
       {/* Multiple Glow Orbs */}
       {[...Array(3)].map((_, i) => (
@@ -29,8 +29,8 @@ export default function LuxuryCTA() {
           animate={{
             scale: [1, 1.5 + i * 0.3, 1],
             opacity: [0.1, 0.25 + i * 0.05, 0.1],
-            x: [0, 100 - i * 30, 0],
-            y: [0, 50 - i * 20, 0],
+            x: [0, (i % 2 === 0 ? 1 : -1) * (80 - i * 20)],
+            y: [0, (i < 1 ? 1 : -1) * (60 - i * 15)],
           }}
           transition={{
             duration: 15 + i * 5,
@@ -39,7 +39,9 @@ export default function LuxuryCTA() {
             delay: i * 2,
           }}
           className={`absolute w-96 h-96 bg-accent-rose-gold/10 rounded-full blur-3xl ${
-            i === 0 ? "top-20 right-20" : i === 1 ? "bottom-20 left-20" : "top-1/2 left-1/2"
+            i === 0 ? "top-20 right-20" : 
+            i === 1 ? "bottom-20 left-20" : 
+            "top-1/2 left-1/2"
           }`}
         />
       ))}
@@ -50,7 +52,7 @@ export default function LuxuryCTA() {
           backgroundPosition: ["0% 0%", "100% 100%"],
         }}
         transition={{
-          duration: 20,
+          duration: 25,
           repeat: Infinity,
           ease: "linear",
         }}
@@ -69,36 +71,32 @@ export default function LuxuryCTA() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-sm text-accent-rose-gold uppercase tracking-[0.3em] mb-8 font-light"
-            >
-              begin your transformation
-            </motion.p>
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal mb-8 lowercase leading-tight">
-              your ritual starts here
-            </h2>
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 1 }}
-              className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold to-transparent mx-auto"
+              transition={{ delay: 0.2, duration: 1 }}
+              className="w-32 h-px bg-gradient-to-r from-transparent via-accent-rose-gold/60 to-transparent mx-auto mb-10"
             />
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-6xl md:text-7xl lg:text-8xl font-serif font-normal mb-10 lowercase leading-tight text-shadow-soft"
+            >
+              your ritual starts here.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-xl text-light-off-white/75 mb-16 font-light max-w-2xl mx-auto leading-relaxed"
+            >
+              beauty is a ritual. book your free consultation.
+            </motion.p>
           </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl text-light-off-white/70 mb-16 font-light max-w-2xl mx-auto leading-relaxed"
-          >
-            beauty is a ritual. book your free consultation and discover the transformation that awaits.
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -110,7 +108,7 @@ export default function LuxuryCTA() {
             <MagneticButton>
               <Link
                 href="/contact#book"
-                className="group relative bg-accent-rose-gold/20 backdrop-blur-sm border-2 border-accent-rose-gold/40 text-light-off-white px-12 py-5 rounded-sm font-light hover:bg-accent-rose-gold/30 transition-all flex items-center space-x-3 tracking-wide text-sm uppercase overflow-hidden"
+                className="group relative bg-accent-rose-gold/20 backdrop-blur-md border-2 border-accent-rose-gold/40 text-light-off-white px-12 py-5 rounded-sm font-light hover:bg-accent-rose-gold/30 transition-all flex items-center space-x-3 tracking-wide text-sm uppercase overflow-hidden shadow-glow"
               >
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-accent-rose-gold/30 via-accent-rose-gold/20 to-accent-rose-gold/30"
@@ -120,10 +118,10 @@ export default function LuxuryCTA() {
                 />
                 <motion.span
                   className="relative z-10"
-                  whileHover={{ letterSpacing: "0.15em" }}
+                  whileHover={{ letterSpacing: "0.2em" }}
                   transition={{ duration: 0.3 }}
                 >
-                  book consultation
+                  book your consultation
                 </motion.span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
               </Link>
@@ -133,10 +131,10 @@ export default function LuxuryCTA() {
                 href="https://wa.me/16477006240"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative border-2 border-light-off-white/30 text-light-off-white px-12 py-5 rounded-sm font-light hover:bg-light-off-white/10 transition-all flex items-center space-x-3 tracking-wide text-sm uppercase backdrop-blur-sm overflow-hidden"
+                className="group relative border-2 border-light-off-white/30 text-light-off-white px-12 py-5 rounded-sm font-light hover:bg-light-off-white/10 transition-all flex items-center space-x-3 tracking-wide text-sm uppercase backdrop-blur-md overflow-hidden glass"
               >
                 <motion.div
-                  className="absolute inset-0 bg-light-off-white/10"
+                  className="absolute inset-0 bg-light-off-white/5"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -145,7 +143,7 @@ export default function LuxuryCTA() {
                 <MessageCircle className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
                 <motion.span
                   className="relative z-10"
-                  whileHover={{ letterSpacing: "0.15em" }}
+                  whileHover={{ letterSpacing: "0.2em" }}
                   transition={{ duration: 0.3 }}
                 >
                   whatsapp
@@ -159,13 +157,10 @@ export default function LuxuryCTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="text-light-off-white/50 text-sm font-light"
+            className="text-light-off-white/60 text-sm font-light"
           >
             or call{" "}
-            <a 
-              href="tel:6477006240" 
-              className="text-accent-rose-gold hover:text-accent-rose-gold/80 transition-colors font-medium"
-            >
+            <a href="tel:6477006240" className="text-accent-rose-gold hover:text-accent-champagne-blush transition-colors font-medium">
               (647) 700-6240
             </a>
           </motion.p>

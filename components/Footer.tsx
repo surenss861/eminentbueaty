@@ -1,43 +1,18 @@
-"use client";
-
 import Link from "next/link";
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
-import { motion } from "framer-motion";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-base-rosewood text-light-off-white/60 border-t border-accent-rose-gold/10">
+    <footer className="bg-dark-wine-black text-light-off-white/60 border-t border-light-off-white/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div>
             <h3 className="text-xl font-serif font-normal mb-4 lowercase text-light-off-white">eminent beauty</h3>
-            <p className="text-light-off-white/50 font-light text-sm leading-relaxed mb-6">
+            <p className="text-light-off-white/50 font-light text-sm leading-relaxed">
               where confidence begins under your skin.
             </p>
-            <div className="flex space-x-5">
-              <motion.a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, color: "#D4A574" }}
-                className="text-light-off-white/50 hover:text-accent-rose-gold transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, color: "#D4A574" }}
-                className="text-light-off-white/50 hover:text-accent-rose-gold transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </motion.a>
-            </div>
           </div>
 
           <div>
@@ -66,16 +41,10 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-accent-rose-gold/60 mt-0.5 flex-shrink-0" />
-                <motion.a
-                  href="https://maps.google.com/?q=2434+Danforth+Ave+Toronto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ color: "#D4A574" }}
-                  className="text-light-off-white/50 font-light text-sm"
-                >
+                <span className="text-light-off-white/50 font-light text-sm">
                   2434 Danforth Ave<br />
                   Toronto, ON
-                </motion.a>
+                </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-accent-rose-gold/60 flex-shrink-0" />
@@ -93,7 +62,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-light-off-white/10 pt-8 text-center text-light-off-white/40 text-xs font-light">
+        <div className="border-t border-light-off-white/5 pt-8 text-center text-light-off-white/40 text-xs font-light">
           <p>
             © {currentYear} eminent beauty centre. all rights reserved.
           </p>
